@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="LoginClienteBean"
+			type="friki.tienda.com.tienda.beans.loginClienteBean" />
+					<form-bean name="ClienteBean"
+			type="friki.tienda.com.tienda.beans.ClienteBean" />
+		<form-bean name="ArticuloBean"
+			type="friki.tienda.com.Persistencia.Articulo" />
+	</form-beans>
+
+	<action-mappings>	
+		<action 
+			path="/loginCliente" 
+			name="LoginClienteBean"
+			scope="request"
+			validate="true"		
+			type="friki.tienda.com.tienda.controladores.cliente.LoginClienteAction">	
+  		</action>
+  		
+  		<action 
+			path="/registroCliente" 
+			name="ClienteBean"
+			scope="request"
+			validate="true"		
+			type="friki.tienda.com.tienda.controladores.cliente.RegistroClienteAction">	
+  		</action>	
+  		
+  		<action 
+  			path="/altaArticulo" 
+  			name="ArticuloBean"
+			type="friki.tienda.com.backoffice.actions.gestionCatalogo.AltaArticulo">
+			<forward name="correcto" path="/muestraMens.jsp" />
+		</action>
+		<action 
+			path="/altaCategoria" 
+			name="categoria"
+			type="friki.tienda.com.backoffice.actions.gestionCatalogo.AltaCategoria">
+			<forward name="correcto" path="/muestraMens.jsp" />
+		</action>
+		<action path="/buscarArticulo">
+			<forward name="encontrado" path="/editarArticulo.jsp" />
+			<forward name="noencontrado" path="/muestraMens.jsp" />
+		</action>
+		<action path="/buscarCategoria">
+			<forward name="encontrado" path="/editarCategoria.jsp" />
+			<forward name="noencontrado" path="/muestraMens.jsp" />
+		</action>
+		
+	</action-mappings>
+</struts-config>
